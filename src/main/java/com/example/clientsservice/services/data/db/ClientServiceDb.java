@@ -28,4 +28,9 @@ public class ClientServiceDb implements ClientService {
     public void delete(Client client){
         clientRepository.delete(client);
     }
+
+    @Override
+    public List<Client> findAllByNameAndSurname(String name, String surname) {
+        return clientRepository.findAllByNameAndSurname(name, surname);
+    }
 }

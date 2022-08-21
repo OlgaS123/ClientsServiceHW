@@ -25,7 +25,7 @@ class PhoneServiceDbTest {
     @Order(1)
     @Test
     void insertTest(){
-        phone1=new Phone(0,"qwerty");
+        phone1=new Phone(0,"qwerty",null);
         phone2=phoneService.save(phone1);
         assertNotNull(phone2);
     }

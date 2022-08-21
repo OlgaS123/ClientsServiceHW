@@ -31,10 +31,10 @@ class ClientServiceJsonTest {
 
     @Order(1)
     @Test
-    void Test() {
+    void saveTest() {
         List<Client> list= Arrays.asList(
-                new Client(1,"q","w", LocalDate.now(),"e","rty"),
-                new Client(2,"q","w", LocalDate.now(),"e","rty")
+                new Client(1,"q","w", LocalDate.now(), Client.Gender.NONE,null,"rty"),
+                new Client(2,"q","w", LocalDate.now(), Client.Gender.NONE,null,"rty")
         );
         clientService.save(list.get(0));
         clientService.save(list.get(1));

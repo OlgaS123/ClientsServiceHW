@@ -14,4 +14,6 @@ public interface ClientService {
     List<Client> findAll();
 
     void delete(Client client);
+
+    List<Client> findAllByNameAndSurname(String name, String surname);
 }

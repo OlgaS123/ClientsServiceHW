@@ -30,10 +30,10 @@ class PhoneServiceJsonTest {
 
     @Order(1)
     @Test
-    void Test() {
+    void saveTest() {
         List<Phone> list= Arrays.asList(
-                new Phone(1,"111111111"),
-                new Phone(2,"222222222")
+                new Phone(1,"111111111",null),
+                new Phone(2,"222222222",null)
         );
         phoneService.save(list.get(0));
         phoneService.save(list.get(1));

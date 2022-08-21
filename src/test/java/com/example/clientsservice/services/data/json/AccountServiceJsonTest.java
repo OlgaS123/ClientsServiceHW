@@ -31,7 +31,7 @@ class AccountServiceJsonTest {
 
     @Order(1)
     @Test
-    void Test() {
+    void saveTest() {
         List<Account> list=Arrays.asList(
                 new Account(1L,100D),
                 new Account(2L,200D)

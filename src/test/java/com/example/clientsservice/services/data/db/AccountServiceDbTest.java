@@ -2,6 +2,7 @@ package com.example.clientsservice.services.data.db;
 
 import com.example.clientsservice.models.Account;
 import com.example.clientsservice.services.data.AccountService;
+import com.example.clientsservice.services.data.qualifiers.AccountServiceQualifier;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -14,7 +15,9 @@ import static org.junit.jupiter.api.Assertions.*;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @SpringBootTest
 class AccountServiceDbTest {
-    @Qualifier("accountServiceDb")
+    //@Qualifier("accountServiceDb")
+    @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
+    @AccountServiceQualifier
     @Autowired
     AccountService accountService;
     static Account account1,account2;

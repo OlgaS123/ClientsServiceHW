@@ -25,7 +25,7 @@ public class ClientsServiceApplication {
 
     @EventListener(ApplicationReadyEvent.class)
     public void applicationReady(){
-        Client client = new Client(0,"a","b", LocalDate.now(),"p","e");
+        Client client = new Client(0,"q","w", LocalDate.now(), Client.Gender.NONE,null,"rty");
         client = clientRepository.save(client);
         System.err.println(client);
 
@@ -39,7 +39,7 @@ public class ClientsServiceApplication {
         System.err.println();
         clientRepository.findAll().forEach(System.err::println);
 
-        Phone phone = new Phone(0,"123456789");
+        /*Phone phone = new Phone(0,"123456789",null);
         phone = phoneRepository.save(phone);
         System.err.println(phone);
 
@@ -51,7 +51,7 @@ public class ClientsServiceApplication {
 
         phoneRepository.delete(phone);
         System.err.println();
-        phoneRepository.findAll().forEach(System.err::println);
+        phoneRepository.findAll().forEach(System.err::println);*/
 
         Account account = new Account(0L,100.50);
         account = accountRepository.save(account);

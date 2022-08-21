@@ -70,4 +70,9 @@ public class ClientServiceJson implements ClientService {
             throw new RuntimeException(e);
         }
     }
+
+    @Override
+    public List<Client> findAllByNameAndSurname(String name, String surname) {
+        return null;
+    }
 }
