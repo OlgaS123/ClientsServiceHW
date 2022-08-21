@@ -53,7 +53,7 @@ public class ClientsServiceApplication {
         System.err.println();
         phoneRepository.findAll().forEach(System.err::println);
 
-        Account account = new Account(0,100.50);
+        Account account = new Account(0L,100.50);
         account = accountRepository.save(account);
         System.err.println(account);
 
