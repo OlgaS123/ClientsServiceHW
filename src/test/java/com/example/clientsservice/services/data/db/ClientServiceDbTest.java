@@ -29,7 +29,7 @@ class ClientServiceDbTest {
     @Order(1)
     @Test
     void insertTest(){
-        client1=new Client(0,"q","w", LocalDate.now(), Client.Gender.NONE,null,"rty");
+        client1=new Client(0,"q","w", LocalDate.now(), Client.Gender.NONE,null,"rty",null);
         client2=clientService.save(client1);
         assertNotNull(client2);
     }
@@ -55,7 +55,7 @@ class ClientServiceDbTest {
     @Order(4)
     @Test
     void saveClientPhones(){
-        client1=new Client(0,"q","w", LocalDate.now(), Client.Gender.NONE,null,"rty");
+        client1=new Client(0,"q","w", LocalDate.now(), Client.Gender.NONE,null,"rty",null);
         client1=clientService.save(client1);
         Phone p1 = new Phone(0, "111", client1);
         Phone p2 = new Phone(0, "222", client1);

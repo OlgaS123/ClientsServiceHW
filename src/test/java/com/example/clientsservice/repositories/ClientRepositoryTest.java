@@ -16,7 +16,7 @@ public class ClientRepositoryTest {
     @Order(1)
     @Test
     void insertTest(){
-        client1=new Client(0,"q","w", LocalDate.now(), Client.Gender.NONE,null,"rty");
+        client1=new Client(0,"q","w", LocalDate.now(), Client.Gender.NONE,null,"rty",null);
         client1=clientRepository.save(client1);
     }
     @Order(2)

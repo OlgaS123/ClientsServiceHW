@@ -33,8 +33,8 @@ class ClientServiceJsonTest {
     @Test
     void saveTest() {
         List<Client> list= Arrays.asList(
-                new Client(1,"q","w", LocalDate.now(), Client.Gender.NONE,null,"rty"),
-                new Client(2,"q","w", LocalDate.now(), Client.Gender.NONE,null,"rty")
+                new Client(1,"q","w", LocalDate.now(), Client.Gender.NONE,null,"rty",null),
+                new Client(2,"q","w", LocalDate.now(), Client.Gender.NONE,null,"rty",null)
         );
         clientService.save(list.get(0));
         clientService.save(list.get(1));

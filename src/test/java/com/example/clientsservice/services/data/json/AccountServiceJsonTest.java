@@ -33,8 +33,8 @@ class AccountServiceJsonTest {
     @Test
     void saveTest() {
         List<Account> list=Arrays.asList(
-                new Account(1L,100D),
-                new Account(2L,200D)
+                new Account(1L,100D, null),
+                new Account(2L,200D, null)
         );
         accountService.save(list.get(0));
         accountService.save(list.get(1));

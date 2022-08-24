@@ -35,8 +35,23 @@ public class Client {
     //private String phone;
     @OneToMany(mappedBy = "client",fetch = FetchType.EAGER)
     private Set<Phone> phones;
-    @Column(nullable = false, length = 50, unique = true)
+    @Column(nullable = false, length = 50)
     private String email;
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "clients_accounts",
+        joinColumns = @JoinColumn(
+                name = "client_id",
+                referencedColumnName = "id",
+                foreignKey = @ForeignKey(
+                        name = "clientKey",
+                        value = ConstraintMode.CONSTRAINT
+                )
+        ), inverseJoinColumns = @JoinColumn(
+            name = "account_id",
+            referencedColumnName = "id"
+        )
+    )
+    private Set<Account> accounts;
 
     @Override
     public boolean equals(Object o) {

@@ -1,5 +1,6 @@
 package com.example.clientsservice.services.data.db;
 
+import com.example.clientsservice.models.Client;
 import com.example.clientsservice.models.Phone;
 import com.example.clientsservice.services.data.PhoneService;
 import org.junit.jupiter.api.MethodOrderer;

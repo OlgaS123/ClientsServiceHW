@@ -18,7 +18,7 @@ public class ClientServiceDb implements ClientService {
     }
     @Override
     public Client findById(Integer id){
-        return clientRepository.findById(id).get();
+        return clientRepository.findById(id).orElse(null);
     }
     @Override
     public List<Client> findAll() {

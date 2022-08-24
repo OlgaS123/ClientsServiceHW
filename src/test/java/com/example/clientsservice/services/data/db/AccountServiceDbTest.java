@@ -25,7 +25,7 @@ class AccountServiceDbTest {
     @Order(1)
     @Test
     void insertTest(){
-        account1=new Account(0L,100D);
+        account1=new Account(0L,100D, null);
         account2=accountService.save(account1);
         assertNotNull(account2);
     }
