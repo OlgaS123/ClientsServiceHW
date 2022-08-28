@@ -6,6 +6,48 @@
 </head>
 
 <body>
+    <div id="clientForm">
+        <form method="post" action="clientForm">
+            <input type="text" placeholder="Name" name="name">
+            <input type="text" placeholder="Surname" name="surname">
+            <input type="date" name="birthday" min="1900-01-01">
+            <select name="gender" id="gender">
+                <option value="NONE">NONE</option>
+                <option value="MALE">MALE</option>
+                <option value="FEMALE">FEMALE</option>
+            </select>
+            <input type="text" placeholder="Email" name="email">
+            <input type="submit" value="ADD" id="submitBtn">
+        </form>
+    </div>
 
+    <div id="clientsTable">
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>BirthDate</th>
+                <th>Gender</th>
+                <th>Email</th>
+            </tr>
+            {{#clients}}
+                <tr>
+                    <td>{{id}}</td>
+                    <td>{{name}}</td>
+                    <td>{{surname}}</td>
+                    <td>{{birthday}}</td>
+                    <td>{{gender}}</td>
+                    <td>{{email}}</td>
+                    <td>
+                        <form action="clientUpdate" method="post">
+                            <input type="hidden" name="id" value="{{id}}">
+                            <input type="submit" value="&#8942">
+                        </form>
+                    </td>
+                </tr>
+            {{/clients}}
+        </table>
+    </div>
 </body>
 </html>
