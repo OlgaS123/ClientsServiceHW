@@ -48,6 +48,7 @@ public class ClientsController {
     @PostMapping("clientUpdate")
     public ModelAndView clientUpdate(@RequestParam("id") Integer id){
 
-        return new ModelAndView("redirect:clientUpdate", new ModelMap("client", id));
+        return new ModelAndView("redirect:clientUpdate", new ModelMap("id", id));
     }
+
 }

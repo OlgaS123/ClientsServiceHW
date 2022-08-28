@@ -23,9 +23,10 @@ public class ClientUpdateController {
     Client client;
 
     @GetMapping("clientUpdate")
-    public String loadClients(Model model, @RequestParam("client") Integer id){
+    public String loadClients(Model model, @RequestParam("id") Integer id){
         client = clientService.findById(id);
         model.addAttribute("client", client);
+        //for mustache:
         Map<Client.Gender, String> genderValues = new HashMap<>();
         for (Client.Gender g : Client.Gender.values()) {
             if (client.getGender()==g)
@@ -34,6 +35,8 @@ public class ClientUpdateController {
                 genderValues.put(g, "");
         }
         model.addAttribute("genderValues", genderValues.entrySet());
+
+
         return "clientUpdate";
     }
 

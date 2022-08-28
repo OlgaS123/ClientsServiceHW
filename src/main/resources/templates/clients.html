@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Clients</title>
+</head>
+<body>
+
+<div id="clientForm">
+    <form method="post" th:action="@{/clientForm}">
+        <input type="text" placeholder="Name" name="name">
+        <input type="text" placeholder="Surname" name="surname">
+        <input type="date" name="birthday" min="1900-01-01">
+        <select name="gender" id="gender">
+            <option value="NONE">NONE</option>
+            <option value="MALE">MALE</option>
+            <option value="FEMALE">FEMALE</option>
+        </select>
+        <input type="text" placeholder="Email" name="email">
+        <input type="submit" value="ADD" id="submitBtn">
+    </form>
+</div>
+
+<div id="clientsTable">
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>BirthDate</th>
+            <th>Gender</th>
+            <th>Email</th>
+        </tr>
+
+        <tr th:each="client:${clients}">
+            <td th:utext="${client.id}"></td>
+            <td th:utext="${client.name}"></td>
+            <td th:utext="${client.surname}"></td>
+            <td th:utext="${client.birthday}"></td>
+            <td th:utext="${client.email}"></td>
+            <td>
+                <form th:action="@{/clientUpdate}" method="post">
+                    <input type="hidden" name="id" th:value="${client.id}">
+                    <input type="submit" value="&#8942">
+                </form>
+            </td>
+        </tr>
+
+    </table>
+</div>
+
+</body>
+</html>
