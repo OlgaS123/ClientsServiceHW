@@ -35,8 +35,7 @@ public class ClientUpdateController {
     public String loadClients(Model model, @RequestParam("id") Integer id){
         client = clientService.findById(id);
         model.addAttribute("client", client);
-        List<Phone> phones =  phoneService.findAll();
-        model.addAttribute("phones", phones);
+        model.addAttribute("phones", client.getPhones());
         //for mustache:
         Map<Client.Gender, String> genderValues = new HashMap<>();
         for (Client.Gender g : Client.Gender.values()) {
