@@ -29,4 +29,9 @@ public class PhoneServiceDb implements PhoneService {
     public void delete(Phone phone){
         phoneRepository.delete(phone);
     }
+
+    @Override
+    public void deleteByID(Integer id) {
+        phoneRepository.deleteById(id);
+    }
 }

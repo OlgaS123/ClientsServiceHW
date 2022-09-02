@@ -14,4 +14,6 @@ public interface PhoneService {
     List<Phone> findAll();
 
     void delete(Phone phone);
+
+    void deleteByID(Integer phoneId);
 }

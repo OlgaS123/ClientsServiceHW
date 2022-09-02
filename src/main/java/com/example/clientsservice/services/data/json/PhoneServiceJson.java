@@ -70,4 +70,9 @@ public class PhoneServiceJson implements PhoneService {
             throw new RuntimeException(e);
         }
     }
+
+    @Override
+    public void deleteByID(Integer phoneId) {
+
+    }
 }
