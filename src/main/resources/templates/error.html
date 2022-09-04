@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Error</title>
+	<th:block th:insert="~{fragments/headSettings::headSettings}"/>
+</head>
+<body>
+<th:block th:insert="~{fragments/pageHeader::pageHeader}"/>
+<h1>:-(</h1>
+<h2>Something went wrong and we couldn't complete your request</h2>
+<a href="/">Go back to home page</a>
+<p th:utext="${message}"></p>
+</body>
+</html>

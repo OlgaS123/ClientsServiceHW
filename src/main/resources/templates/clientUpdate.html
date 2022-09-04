@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Client UPD</title>
+    <th:block th:insert="~{fragments/headSettings::headSettings}"/>
 </head>
 <body>
+<th:block th:insert="~{fragments/pageHeader::pageHeader}"/>
 <div id="clientForm">
     <form method="post" th:action="@{/clientUpdateForm}" th:object="${client}">
         <input type="hidden" name="id" th:value="${client.id}">

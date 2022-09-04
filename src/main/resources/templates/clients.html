@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Clients</title>
+    <th:block th:insert="~{fragments/headSettings::headSettings}"/>
 </head>
 <body>
-
+<th:block th:insert="~{fragments/pageHeader::pageHeader}"/>
 <div id="clientForm">
     <form method="post" th:action="@{/clientForm}">
         <input type="text" placeholder="Name" name="name">

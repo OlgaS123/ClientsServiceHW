@@ -1,4 +1,4 @@
-package com.example.clientsservice.controllers;
+package com.example.clientsservice.ui.controllers;
 
 import com.example.clientsservice.models.Client;
 import com.example.clientsservice.services.data.ClientService;

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Authorization</title>
+	<th:block th:insert="~{fragments/headSettings::headSettings}"/>
+</head>
+<body>
+<th:block th:insert="~{fragments/pageHeader::pageHeader}"/>
+<div class="formDiv">
+	<form method="post" action="/authorization" >
+		<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+		<input type="text" name="username" placeholder="Login">
+		<input type="password" name="password" placeholder="Password">
+		<input type="submit" value="Login" style="width: 100px">
+	</form>
+</div>
+</body>
+</html>

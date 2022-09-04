@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Users</title>
+	<th:block th:insert="~{fragments/headSettings::headSettings}"/>
+</head>
+<body>
+<th:block th:insert="~{fragments/pageHeader::pageHeader}"/>
+<div id="usersTable">
+	<table>
+		<tr>
+			<th>ID</th>
+			<th>Username</th>
+			<th>Mail</th>
+			<th>Status</th>
+			<th>Role</th>
+		</tr>
+		<tr th:each="user:${users}">
+			<td th:utext="${user.id}"></td>
+			<td th:utext="${user.username}"></td>
+			<td th:utext="${user.mail}"></td>
+			<td th:utext="${user.status}"></td>
+			<td th:utext="${user.role}"></td>
+		</tr>
+	</table>
+</div>
+</body>
+</html>

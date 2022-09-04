@@ -1,0 +1,47 @@
+*{
+    font-family: Roboto, serif;
+}
+/*PAGE HEADER*/
+.lanCont {
+    /*width: 1310px;*/
+    /*height: 120px;*/
+    /*background: #394551;*/
+    background: #F2F5F9;
+    margin: 0 auto 20px;
+    padding: 10px;
+}
+.lanEl {
+    float: left;
+    /*line-height: 120px;*/
+    /*font-size: 40px;*/
+    /*width: 320px;*/
+    margin-right: 10px;
+    text-align: center;
+}
+.lanCont :last-child {
+    margin-right: 0;
+}
+/*PAGE HEADER*/
+table {
+    width: 100%;
+    margin: 10px;
+    border-collapse: collapse;
+    font-size: small;
+    text-align: center;
+}
+table th {
+    font-weight: bold;
+    padding: 5px;
+    background: #efefef;
+    border: 1px solid #dddddd;
+}
+table td {
+    border: 1px solid #dddddd;
+    padding: 5px;
+}
+table tr td:first-child, table tr th:first-child {
+    border-left: none;
+}
+table tr td:last-child, table tr th:last-child {
+    border-right: none;
+}
