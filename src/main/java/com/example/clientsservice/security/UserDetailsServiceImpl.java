@@ -1,7 +1,7 @@
 package com.example.clientsservice.security;
 
 import com.example.clientsservice.models.User;
-import com.example.clientsservice.services.UserService;
+import com.example.clientsservice.services.data.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

@@ -2,7 +2,7 @@ package com.example.clientsservice.services.data.db;
 
 import com.example.clientsservice.models.User;
 import com.example.clientsservice.repositories.UserRepository;
-import com.example.clientsservice.services.UserService;
+import com.example.clientsservice.services.data.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,5 +30,10 @@ public class UserServiceDb implements UserService {
     @Override
     public void deleteAll() {
         userRepository.deleteAll();
+    }
+
+    @Override
+    public User findById(Integer id) {
+        return userRepository.findById(id).orElse(null);
     }
 }

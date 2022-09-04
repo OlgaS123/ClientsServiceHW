@@ -1,7 +1,7 @@
 package com.example.clientsservice.services.data.db;
 
 import com.example.clientsservice.models.User;
-import com.example.clientsservice.services.UserService;
+import com.example.clientsservice.services.data.UserService;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;

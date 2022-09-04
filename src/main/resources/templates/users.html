@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="UTF-8">
 	<title>Users</title>
@@ -16,13 +16,32 @@
 			<th>Status</th>
 			<th>Role</th>
 		</tr>
+
 		<tr th:each="user:${users}">
 			<td th:utext="${user.id}"></td>
 			<td th:utext="${user.username}"></td>
 			<td th:utext="${user.mail}"></td>
-			<td th:utext="${user.status}"></td>
-			<td th:utext="${user.role}"></td>
+			<form method="post" th:action="userUpdateForm">
+			<td>
+				<select name="status" id="status" th:onchange="">
+					<option th:each="status:${T(com.example.clientsservice.models.User.Status).values()}"
+							th:value="${status}" th:text="${status}"
+							th:selected="${status == user.status}"></option>
+				</select>
+			</td>
+			<td>
+				<select name="role" id="role">
+					<option th:each="role:${T(com.example.clientsservice.models.User.Role).values()}"
+							th:value="${role}" th:text="${role}"
+							th:selected="${role == user.role}"></option>
+				</select>
+			</td>
+			<td>
+				<button type="submit" name="userUpd" th:value="${user.id}">SAVE</button>
+			</td>
+			</form>
 		</tr>
+
 	</table>
 </div>
 </body>
