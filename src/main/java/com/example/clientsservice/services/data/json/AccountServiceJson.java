@@ -69,4 +69,9 @@ public class AccountServiceJson implements AccountService {
             throw new RuntimeException(e);
         }
     }
+
+    @Override
+    public void deleteByID(Long id) {
+
+    }
 }

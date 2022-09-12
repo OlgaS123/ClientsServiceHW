@@ -55,7 +55,7 @@
                         </form>
                     </div>
                     <div>
-                        <form method="post" th:action="deletePhoneForm" >
+                        <form method="post" th:action="deletePhoneForm">
                             <input type="hidden" th:name="clientId" th:value="${client.id}">
                             <div th:each="phone:${phones}" class="row g-2">
                                 <div class="col-auto">
@@ -72,11 +72,11 @@
             <div class="row">
                 <div class="col">
                     <div style="margin-bottom: 5px;">
-                        <form method="post" th:action="@{addPhoneForm}" class="row g-2">
+                        <form method="post" th:action="@{addAccountForm}" class="row g-2">
                             <input type="hidden" th:name="clientId" th:value="${client.id}">
                             <div class="col-auto">
                                 <label for="addAccount" class="form-label">Add account</label>
-                                <input type="text" class="form-control" id="addAccount" name="phone">
+                                <input type="text" class="form-control" id="addAccount" name="account">
                             </div>
                             <div class="col-auto" style="align-self: flex-end">
                                 <input type="submit" class="btn btn-primary" value="Add"/>
@@ -84,14 +84,17 @@
                         </form>
                     </div>
                     <div>
-                        <form method="post" th:action="deletePhoneForm" >
+                        <form method="post" th:action="@{delAccountForm}">
                             <input type="hidden" th:name="clientId" th:value="${client.id}">
-                            <div th:each="phone:${phones}" class="row g-2">
+                            <div th:each="account:${accounts}" class="row g-3">
                                 <div class="col-auto">
-                                    <input type="text" class="form-control" th:name="${phone.id}" th:value="${phone.phone}" disabled>
+                                    <input type="text" class="form-control" th:name="${account.id}" th:value="${account.amount}">
                                 </div>
                                 <div class="col-auto" style="align-self: flex-end">
-                                    <button type="submit" class="btn btn-danger" name="phoneDelete" th:value="${phone.id}">X</button>
+                                    <button type="submit" class="btn btn-primary" name="accountUpdate" th:value="${account.id}" disabled>Save</button>
+                                </div>
+                                <div class="col-auto" style="align-self: flex-end">
+                                    <button type="submit" class="btn btn-danger" name="accountDelete" th:value="${account.id}">X</button>
                                 </div>
                             </div>
                         </form>

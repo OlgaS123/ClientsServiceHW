@@ -32,4 +32,9 @@ public class AccountServiceDb implements AccountService {
     public void delete(Account account){
         accountRepository.delete(account);
     }
+
+    @Override
+    public void deleteByID(Long id) {
+        accountRepository.deleteById(id);
+    }
 }

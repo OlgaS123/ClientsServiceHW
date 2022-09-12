@@ -1,7 +1,9 @@
 package com.example.clientsservice.ui.controllers;
 
+import com.example.clientsservice.models.Account;
 import com.example.clientsservice.models.Client;
 import com.example.clientsservice.models.Phone;
+import com.example.clientsservice.services.data.AccountService;
 import com.example.clientsservice.services.data.ClientService;
 import com.example.clientsservice.services.data.PhoneService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +31,9 @@ public class ClientUpdateController {
     @Qualifier("phoneServiceDb")
     @Autowired
     private PhoneService phoneService;
+    @Qualifier("accountServiceDb")
+    @Autowired
+    private AccountService accountService;
     Client client;
 
     @GetMapping("clientUpdate")
@@ -36,6 +41,7 @@ public class ClientUpdateController {
         client = clientService.findById(id);
         model.addAttribute("client", client);
         model.addAttribute("phones", client.getPhones());
+        model.addAttribute("accounts", client.getAccounts());
         //for mustache:
         Map<Client.Gender, String> genderValues = new HashMap<>();
         for (Client.Gender g : Client.Gender.values()) {
@@ -96,5 +102,40 @@ public class ClientUpdateController {
         phoneService.deleteByID(phoneId);
         return new ModelAndView("redirect:clientUpdate",
                 new ModelMap("id",clientId));
+    }
+
+    @PostMapping("addAccountForm")
+    public ModelAndView addAccountForm(
+            @ModelAttribute("account") String acc,
+            @RequestParam("clientId") Integer id
+    ){
+        Client client = clientService.findById(id);
+        Account account = new Account(0L, Double.parseDouble(acc), null);
+        account=accountService.save(account);
+        client.getAccounts().add(account);
+        clientService.save(client);
+        return new ModelAndView("redirect:clientUpdate",
+                new ModelMap("id",id));
+    }
+
+    @PostMapping("delAccountForm")
+    public ModelAndView delAccountForm(
+            @RequestParam("clientId") Integer clientId,
+            @RequestParam("accountDelete") Long id
+    ){
+        Client client = clientService.findById(clientId);
+        client.getAccounts().removeIf(account -> account.getId()==id);
+        clientService.save(client);
+        return new ModelAndView("redirect:clientUpdate",
+                new ModelMap("id",clientId));
+    }
+
+    @PostMapping("updAccountForm")
+    public String updAccountForm(
+            @RequestParam("clientId") Integer clientId,
+            @RequestParam("accountUpdate") Long id
+    ){
+        //not working =(
+        return "";
     }
 }
