@@ -7,15 +7,30 @@
 </head>
 <body>
 <th:block th:insert="~{fragments/pageHeader::pageHeader}"/>
-<div class="formDiv">
-	<form action="/registration" method="post">
-		<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
-		<input type="text" name="username" placeholder="Login">
-		<input type="password" name="password" placeholder="Password">
-		<input type="email" name="mail" placeholder="Mail">
-		<input type="button" name="cancel" value="Cancel">
-		<input type="submit" value="Register" style="width: 100px">
-	</form>
+<div class="formDiv container">
+	<div class="row">
+		<div class="col"></div>
+		<div class="col">
+			<form action="/registration" method="post">
+				<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+				<div class="mb-3">
+					<label for="exampleInputLogin" class="form-label">Login</label>
+					<input type="text" name="username" class="form-control" id="exampleInputLogin" aria-describedby="loginHelp">
+				</div>
+				<div class="mb-3">
+					<label for="exampleInputEmail" class="form-label">Email address</label>
+					<input type="email" name="mail" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp">
+				</div>
+				<div class="mb-3">
+					<label for="exampleInputPassword" class="form-label">Password</label>
+					<input type="password" name="password" class="form-control" id="exampleInputPassword">
+				</div>
+				<input type="button" name="cancel" value="Cancel" class="btn btn-danger"/>
+				<input type="submit" value="Register" class="btn btn-primary"/>
+			</form>
+		</div>
+		<div class="col"></div>
+	</div>
 </div>
 </body>
 </html>

@@ -7,42 +7,49 @@
 </head>
 <body>
 <th:block th:insert="~{fragments/pageHeader::pageHeader}"/>
-<div id="usersTable">
-	<table>
-		<tr>
-			<th>ID</th>
-			<th>Username</th>
-			<th>Mail</th>
-			<th>Status</th>
-			<th>Role</th>
-		</tr>
-
-		<tr th:each="user:${users}">
-			<td th:utext="${user.id}"></td>
-			<td th:utext="${user.username}"></td>
-			<td th:utext="${user.mail}"></td>
-			<form method="post" th:action="userUpdateForm">
-			<td>
-				<select name="status" id="status" th:onchange="">
-					<option th:each="status:${T(com.example.clientsservice.models.User.Status).values()}"
-							th:value="${status}" th:text="${status}"
-							th:selected="${status == user.status}"></option>
-				</select>
-			</td>
-			<td>
-				<select name="role" id="role">
-					<option th:each="role:${T(com.example.clientsservice.models.User.Role).values()}"
-							th:value="${role}" th:text="${role}"
-							th:selected="${role == user.role}"></option>
-				</select>
-			</td>
-			<td>
-				<button type="submit" name="userUpd" th:value="${user.id}">SAVE</button>
-			</td>
-			</form>
-		</tr>
-
-	</table>
+<div class="container">
+	<div class="row" style="display: flex; flex: 1;">
+		<div class="col-8" id="usersTable">
+			<table class="table table-striped">
+				<thead>
+				<tr>
+					<th>ID</th>
+					<th>Username</th>
+					<th>Mail</th>
+					<th>Status</th>
+					<th>Role</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr th:each="user:${users}">
+					<td th:utext="${user.id}"></td>
+					<td th:utext="${user.username}"></td>
+					<td th:utext="${user.mail}"></td>
+					<form method="post" th:action="userUpdateForm">
+						<td>
+							<select name="status" id="status" th:onchange="">
+								<option th:each="status:${T(com.example.clientsservice.models.User.Status).values()}"
+										th:value="${status}" th:text="${status}"
+										th:selected="${status == user.status}"></option>
+							</select>
+						</td>
+						<td>
+							<select name="role" id="role">
+								<option th:each="role:${T(com.example.clientsservice.models.User.Role).values()}"
+										th:value="${role}" th:text="${role}"
+										th:selected="${role == user.role}"></option>
+							</select>
+						</td>
+						<td>
+							<button type="submit" name="userUpd" th:value="${user.id}" class="btn btn-primary">SAVE</button>
+						</td>
+					</form>
+				</tr>
+				</tbody>
+			</table>
+		</div >
+	</div>
 </div>
+
 </body>
 </html>

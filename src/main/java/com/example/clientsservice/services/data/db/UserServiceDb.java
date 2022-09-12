@@ -4,12 +4,16 @@ import com.example.clientsservice.models.User;
 import com.example.clientsservice.repositories.UserRepository;
 import com.example.clientsservice.services.data.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class UserServiceDb implements UserService {
+    public BCryptPasswordEncoder encoder(){
+        return new BCryptPasswordEncoder();
+    }
     @Autowired
     private UserRepository userRepository;
     @Override
@@ -24,6 +28,7 @@ public class UserServiceDb implements UserService {
 
     @Override
     public User save(User user) {
+        user.setPassword(encoder().encode(user.getPassword()));
         return userRepository.save(user);
     }
 

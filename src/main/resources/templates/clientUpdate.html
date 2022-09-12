@@ -7,39 +7,101 @@
 </head>
 <body>
 <th:block th:insert="~{fragments/pageHeader::pageHeader}"/>
-<div id="clientForm">
-    <form method="post" th:action="@{/clientUpdateForm}" th:object="${client}">
-        <input type="hidden" name="id" th:value="${client.id}">
-        <input type="text" placeholder="Name" name="name" th:value="${client.name}">
-        <input type="text" placeholder="Surname" name="surname" th:value="${client.surname}">
-        <input type="date" name="birthday" min="1900-01-01" th:value="${client.birthday}">
-        <select name="gender" id="gender">
-            <option th:each="gender:${T(com.example.clientsservice.models.Client.Gender).values()}"
-                    th:value="${gender}" th:text="${gender}"
-                    th:selected="${gender == client.gender}"></option>
-        </select>
-        <input type="text" placeholder="Email" name="email"  th:value="${client.email}">
-        <input type="submit" value="SAVE" id="submitBtn">
-    </form>
-</div>
-<div>
-    <form method="post" th:action="@{addPhoneForm}">
-        <input type="hidden" th:name="clientId" th:value="${client.id}">
-        <input type="text" name="phone">
-        <input type="submit" value="Add">
-    </form>
-</div>
-<div>
-    <form method="post" th:action="deletePhoneForm">
-        <input type="hidden" th:name="clientId" th:value="${client.id}">
-        <th:block th:each="phone:${phones}">
-            <div>
-                <button type="submit" name="phoneDelete" th:value="${phone.id}">X</button>
-                <input type="text" th:name="${phone.id}" th:value="${phone.phone}" disabled>
+<div class="container">
+    <div class="row">
+        <div class="col" id="clientForm">
+            <form method="post" th:action="@{/clientUpdateForm}" th:object="${client}">
+                <input type="hidden" name="id" th:value="${client.id}">
+                <div class="mb-3">
+                    <label for="inputName" class="form-label">Name</label>
+                    <input type="text" class="form-control" name="name" id="inputName" th:value="${client.name}">
+                </div>
+                <div class="mb-3">
+                    <label for="inputSurname" class="form-label">Surname</label>
+                    <input type="text" class="form-control" name="surname" id="inputSurname" th:value="${client.surname}">
+                </div>
+                <div class="mb-3">
+                    <label for="inputBd" class="form-label">Birthday</label>
+                    <input type="date" class="form-control" name="birthday" min="1900-01-01" id="inputBd" th:value="${client.birthday}">
+                </div>
+                <div class="mb-3">
+                    <label for="genderSelect">Gender</label>
+                    <select class="form-select" id="genderSelect" name="gender">
+                        <option th:each="gender:${T(com.example.clientsservice.models.Client.Gender).values()}"
+                                th:value="${gender}" th:text="${gender}"
+                                th:selected="${gender == client.gender}"></option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="inputEmail" class="form-label">Email</label>
+                    <input type="email" class="form-control" name="email" id="inputEmail" th:value="${client.email}">
+                </div>
+                <input type="submit" class="btn btn-primary" value="SAVE" id="submitBtn"/>
+            </form>
+        </div>
+        <div class="col">
+            <div class="row">
+                <div class="col">
+                    <div style="margin-bottom: 5px;">
+                        <form method="post" th:action="@{addPhoneForm}" class="row g-2">
+                            <input type="hidden" th:name="clientId" th:value="${client.id}">
+                            <div class="col-auto">
+                                <label for="addPhone" class="form-label">Add phone</label>
+                                <input type="text" class="form-control" id="addPhone" name="phone">
+                            </div>
+                            <div class="col-auto" style="align-self: flex-end">
+                                <input type="submit" class="btn btn-primary" value="Add"/>
+                            </div>
+                        </form>
+                    </div>
+                    <div>
+                        <form method="post" th:action="deletePhoneForm" >
+                            <input type="hidden" th:name="clientId" th:value="${client.id}">
+                            <div th:each="phone:${phones}" class="row g-2">
+                                <div class="col-auto">
+                                    <input type="text" class="form-control" th:name="${phone.id}" th:value="${phone.phone}" disabled>
+                                </div>
+                                <div class="col-auto" style="align-self: flex-end">
+                                    <button type="submit" class="btn btn-danger" name="phoneDelete" th:value="${phone.id}">X</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
-        </th:block>
-    </form>
-
+            <div class="row">
+                <div class="col">
+                    <div style="margin-bottom: 5px;">
+                        <form method="post" th:action="@{addPhoneForm}" class="row g-2">
+                            <input type="hidden" th:name="clientId" th:value="${client.id}">
+                            <div class="col-auto">
+                                <label for="addAccount" class="form-label">Add account</label>
+                                <input type="text" class="form-control" id="addAccount" name="phone">
+                            </div>
+                            <div class="col-auto" style="align-self: flex-end">
+                                <input type="submit" class="btn btn-primary" value="Add"/>
+                            </div>
+                        </form>
+                    </div>
+                    <div>
+                        <form method="post" th:action="deletePhoneForm" >
+                            <input type="hidden" th:name="clientId" th:value="${client.id}">
+                            <div th:each="phone:${phones}" class="row g-2">
+                                <div class="col-auto">
+                                    <input type="text" class="form-control" th:name="${phone.id}" th:value="${phone.phone}" disabled>
+                                </div>
+                                <div class="col-auto" style="align-self: flex-end">
+                                    <button type="submit" class="btn btn-danger" name="phoneDelete" th:value="${phone.id}">X</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+
 </body>
 </html>

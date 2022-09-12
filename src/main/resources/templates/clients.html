@@ -5,51 +5,72 @@
     <title>Clients</title>
     <th:block th:insert="~{fragments/headSettings::headSettings}"/>
 </head>
-<body>
+<body style="display: flex; height: 100vh; flex-direction: column">
 <th:block th:insert="~{fragments/pageHeader::pageHeader}"/>
-<div id="clientForm">
-    <form method="post" th:action="@{/clientForm}">
-        <input type="text" placeholder="Name" name="name">
-        <input type="text" placeholder="Surname" name="surname">
-        <input type="date" name="birthday" min="1900-01-01">
-        <select name="gender" id="gender">
-            <option value="NONE">NONE</option>
-            <option value="MALE">MALE</option>
-            <option value="FEMALE">FEMALE</option>
-        </select>
-        <input type="text" placeholder="Email" name="email">
-        <input type="submit" value="ADD" id="submitBtn">
-    </form>
+<div class="container" style="display: flex; overflow: hidden; min-height: 0; flex: 1 1 auto;">
+    <div class="row" style="display: flex; flex: 1;">
+        <div class="col-8" id="clientsTable" style="overflow-y: scroll; height: 100%;">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Surname</th>
+                        <th>BirthDate</th>
+                        <th>Gender</th>
+                        <th>Email</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="client:${clients}">
+                        <td th:utext="${client.id}"></td>
+                        <td th:utext="${client.name}"></td>
+                        <td th:utext="${client.surname}"></td>
+                        <td th:utext="${client.birthday}"></td>
+                        <td th:utext="${client.gender}"></td>
+                        <td th:utext="${client.email}"></td>
+                        <td>
+                            <form th:action="@{/clientUpdate}" method="post">
+                                <input type="hidden" name="id" th:value="${client.id}">
+                                <input type="submit" value="&#8942" class="btn btn-primary">
+                            </form>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+        </div >
+        <div class="col-4" id="clientForm">
+            <form method="post" th:action="@{/clientForm}">
+                <div class="mb-3">
+                    <label for="inputName" class="form-label">Name</label>
+                    <input type="text" class="form-control" name="name" id="inputName">
+                </div>
+                <div class="mb-3">
+                    <label for="inputSurname" class="form-label">Surname</label>
+                    <input type="text" class="form-control" name="surname" id="inputSurname">
+                </div>
+                <div class="mb-3">
+                    <label for="inputBd" class="form-label">Birthday</label>
+                    <input type="date" class="form-control" name="birthday" min="1900-01-01" id="inputBd">
+                </div>
+                <div class="mb-3">
+                    <label for="genderSelect">Gender</label>
+                    <select class="form-select" id="genderSelect" name="gender">
+                        <option value="NONE">NONE</option>
+                        <option value="MALE">MALE</option>
+                        <option value="FEMALE">FEMALE</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="inputEmail" class="form-label">Email</label>
+                    <input type="email" class="form-control" name="email" id="inputEmail">
+                </div>
+                <input type="submit" class="btn btn-primary" value="ADD" id="submitBtn"/>
+            </form>
+        </div>
+    </div>
 </div>
 
-<div id="clientsTable">
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Surname</th>
-            <th>BirthDate</th>
-            <th>Gender</th>
-            <th>Email</th>
-        </tr>
-
-        <tr th:each="client:${clients}">
-            <td th:utext="${client.id}"></td>
-            <td th:utext="${client.name}"></td>
-            <td th:utext="${client.surname}"></td>
-            <td th:utext="${client.birthday}"></td>
-            <td th:utext="${client.gender}"></td>
-            <td th:utext="${client.email}"></td>
-            <td>
-                <form th:action="@{/clientUpdate}" method="post">
-                    <input type="hidden" name="id" th:value="${client.id}">
-                    <input type="submit" value="&#8942">
-                </form>
-            </td>
-        </tr>
-
-    </table>
-</div>
 
 </body>
 </html>
